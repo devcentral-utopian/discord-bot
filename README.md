@@ -1,0 +1,2 @@
+# Creating a Discord Bot in Python
+This repository contains the sample code for my tutorial series on utopian.io on how to create a Discord Bot in Python with the Discord API Wrapper discord.py. You can check them out [here](https://utopian.io/@dev.central). Browse the commits to find sample code for every tutorial. 
