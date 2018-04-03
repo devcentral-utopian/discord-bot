@@ -1,7 +1,8 @@
 import discord # Discord API Wrapper 
-
+import handler
 
 token = "YOUR TOKEN HERE" 
+prefix = "PREFIX" 
 # Create new client 
 client = discord.Client() 
 
@@ -15,12 +16,14 @@ async def on_ready():
 
 
 # Fires every time a new message is received 
-@client.event 
-async def on_message(message): 
-    if message.content == "!test": 
-        print("Received test command!") 
-        await client.send_message(message.channel, "Hello, " + message.author.name) 
-        
+@client.event
+async def on_message(message):
+    if message.author == client.user: # Don't handle our messages
+        return
+
+    # Send the message to the CommandHandler if the message starts with the prefix
+    if message.content.startswith(prefix):
+        await handler.handle(message)
         
 # Connect the client to Discord 
 client.run(token)
